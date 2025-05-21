@@ -71,7 +71,7 @@ then
   touch README.md && \
   git add README.md && \
   git commit -m "Initial ${BRANCH} commit" && \
-  git push "$REPOSITORY_PATH" $BRANCH
+  git push "https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$TARGET_REPOSITORY.git" $BRANCH
 else
   ## Clone the target repository
   git clone "$REPOSITORY_PATH" $DOC_FOLDER --branch $BRANCH --single-branch && \
@@ -145,5 +145,5 @@ fi
 
 
 git commit -m "Deploying to ${BRANCH} - $(date +"%T")" --quiet && \
-git push origin gh-pages || true && \
+git push "https://$GITHUB_ACTOR:$GH_TOKEN@github.com/$TARGET_REPOSITORY.git" gh-pages || true && \
 echo "Deployment successful!"
