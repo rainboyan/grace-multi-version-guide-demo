@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: ../actions/deploy-github-pages
+        uses: ./.github/actions/deploy-github-pages
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
