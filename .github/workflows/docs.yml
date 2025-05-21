@@ -46,9 +46,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: micronaut-projects/github-pages-deploy-action@master
+        uses: ./.github/actions/deploy-github-pages
         env:
-          TARGET_REPOSITORY: ${{ github.repository }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAT }}
           BRANCH: gh-pages
           FOLDER: build/docs
