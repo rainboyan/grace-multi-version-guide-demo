@@ -1,0 +1,11 @@
+name: 'Deploy GitHub Pages site'
+description: 'A GitHub Action to deploy an artifact as a GitHub Pages site'
+author: 'Michael Yan'
+branding:
+  icon: 'award'
+  color: 'orange'
+runs:
+  using: 'composite'
+  steps:
+    - run: ${{ github.action_path }}/deploy-github-pages/main.sh
+      shell: bash
