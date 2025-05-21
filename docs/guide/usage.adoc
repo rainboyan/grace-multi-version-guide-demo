@@ -1,0 +1,20 @@
+Apply `grace-doc` plugin to your `build.gradle`,
+
+[source,groovy]
+----
+apply plugin: "org.graceframework.grace-doc"
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
+}
+
+dependencies {
+    implementation "org.graceframework:grace-boot"
+}
+----
