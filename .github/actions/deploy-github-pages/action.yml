@@ -7,5 +7,9 @@ branding:
 runs:
   using: 'composite'
   steps:
-    - run: ${{ github.action_path }}/main.sh
+    - name: Make the script files executable
+      run: chmod +x ${{ github.action_path }}/main.sh
+      shell: bash
+    - name: Execute the main script
+      run: ${{ github.action_path }}/main.sh
       shell: bash
