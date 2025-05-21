@@ -56,7 +56,7 @@ git config --global http.version HTTP/1.1
 git config --global http.postBuffer 157286400
 
 ## Initializes the repository path using the access token.
-REPOSITORY_PATH="https://${GH_TOKEN}@github.com/${TARGET_REPOSITORY}.git" && \
+REPOSITORY_PATH="https://github.com/${TARGET_REPOSITORY}.git" && \
 
 # Checks to see if the remote exists prior to deploying.
 # If the branch doesn't exist it gets created here as an orphan.
