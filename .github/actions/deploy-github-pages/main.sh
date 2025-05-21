@@ -81,7 +81,7 @@ fi
 # Builds the project if a build script is provided.
 if [ -n "$BUILD_SCRIPT" ]; then
   echo "Running build scripts... $BUILD_SCRIPT" && \
-  eval "$BUILD_SCRIPT" && \
+  eval "$BUILD_SCRIPT"
 fi
 
 if [ -n "$CNAME" ]; then
