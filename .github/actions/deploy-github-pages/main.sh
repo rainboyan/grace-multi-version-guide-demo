@@ -71,7 +71,7 @@ then
   touch README.md && \
   git add README.md && \
   git commit -m "Initial ${BRANCH} commit" && \
-  git push origin $BRANCH
+  git push "$REPOSITORY_PATH" $BRANCH
 else
   ## Clone the target repository
   git clone "$REPOSITORY_PATH" $DOC_FOLDER --branch $BRANCH --single-branch && \
