@@ -3,3 +3,7 @@ This is a demo for publishing guide to GitHub Pages.
 == First
 
 Let's do it!
+
+== Second
+
+That's awesome!
