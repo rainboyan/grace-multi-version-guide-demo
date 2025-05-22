@@ -37,7 +37,7 @@ jobs:
           arguments: docs
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: ./.github/actions/deploy-github-pages
+        uses: rainboyan/deploy-github-pages@main
         env:
           VERSION: ${{ steps.current_version.outputs.projectVersion }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
