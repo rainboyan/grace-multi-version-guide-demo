@@ -27,6 +27,11 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: ${{ matrix.java }}
+      - name: Get the current version
+        id: current_version
+        run: |
+          VERSION=$(./gradlew properties | grep 'version:' | awk '{print $2}')
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Generate Docs
         id: build
         uses: gradle/actions/setup-gradle@v3
@@ -36,6 +41,7 @@ jobs:
         id: deployment
         uses: ./.github/actions/deploy-github-pages
         env:
+          VERSION: ${{ steps.current_version.outputs.version }}
           GH_TOKEN: ${{ secrets.PAT }}
           BRANCH: gh-pages
           FOLDER: build/docs

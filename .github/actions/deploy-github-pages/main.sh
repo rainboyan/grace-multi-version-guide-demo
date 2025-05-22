@@ -103,10 +103,10 @@ then
     cp -r "../$FOLDER/." ./snapshot/
     git add snapshot/*
   fi
-else 
+else
     echo "Publishing $VERSION of Docs"
     if [ -z "$BETA" ] || [ "$BETA" = "false" ]
-    then 
+    then
       echo "Publishing Latest Docs"
       if [ -n "${DOC_SUB_FOLDER}" ]; then
         mkdir -p latest/$DOC_SUB_FOLDER
