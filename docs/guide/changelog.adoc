@@ -1,5 +1,9 @@
 This is the changelog,
 
+== 1.0.0
+
+v1.0.0 released
+
 == 1.0.0-RC2
 
 v1.0.0-RC2 released
