@@ -40,6 +40,6 @@ jobs:
         uses: ./.github/actions/deploy-github-pages
         env:
           VERSION: ${{ steps.current_version.outputs.projectVersion }}
-          GH_TOKEN: ${{ secrets.PAT }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build/docs
