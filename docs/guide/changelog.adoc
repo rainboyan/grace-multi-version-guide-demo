@@ -1,0 +1,17 @@
+This is the changelog,
+
+== 1.0.0-RC2
+
+v1.0.0-RC2 released
+
+== 1.0.0-RC1
+
+v1.0.0-RC1 released
+
+== 1.0.0-M2
+
+v1.0.0-M2 released
+
+== 1.0.0-M1
+
+v1.0.0-M1 released
