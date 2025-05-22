@@ -44,6 +44,8 @@ function addJsClass(el) {
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#usage"><strong>3</strong><span>Usage</span></a></div>
                                 
+                                <div class="toc-item" style="margin-left:0"><a href="#deploy"><strong>4</strong><span>Deploy to GitHub Pages</span></a></div>
+                                
                             </div>
                         </div>
                     </li>
@@ -81,6 +83,8 @@ function addJsClass(el) {
                             <div class="toc-item" style="margin-left:0px"><a href="#changelog"><strong>2</strong><span>Changelog</span></a></div>
                             
                             <div class="toc-item" style="margin-left:0px"><a href="#usage"><strong>3</strong><span>Usage</span></a></div>
+                            
+                            <div class="toc-item" style="margin-left:0px"><a href="#deploy"><strong>4</strong><span>Deploy to GitHub Pages</span></a></div>
                             
                             <div style="clear:both" ></div>
                         </div>
@@ -200,6 +204,62 @@ repositories {
 dependencies {
     implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework:grace-boot</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
+</div>
+</div>
+
+
+<h1 id="deploy"><a class="anchor" href="#deploy"></a>4 Deploy to GitHub Pages</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/grace-plugins/grace-dynamic-modules/edit/main/docs/guide/deploy.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>How to deploy guide to GitHub Pages,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yml"><span class="key">jobs</span>:
+  <span class="comment"># Build job</span>
+  <span class="key">build</span>:
+    <span class="key">permissions</span>:
+      <span class="key">contents</span>: <span class="string"><span class="content">read</span></span>  <span class="comment">#  to fetch code (actions/checkout)</span>
+    <span class="key">runs-on</span>: <span class="string"><span class="content">ubuntu-latest</span></span>
+    <span class="key">strategy</span>:
+      <span class="key">matrix</span>:
+        <span class="key">java</span>: <span class="string"><span class="content">['17']</span></span>
+    <span class="key">steps</span>:
+      - <span class="string"><span class="content">name: Checkout repository</span></span>
+        <span class="key">env</span>:
+          <span class="key">GITHUB_TOKEN</span>: <span class="string"><span class="content">${{ secrets.GITHUB_TOKEN }}</span></span>
+        <span class="key">uses</span>: <span class="string"><span class="content">actions/checkout@v4</span></span>
+        <span class="key">with</span>:
+          <span class="key">token</span>: <span class="string"><span class="content">${{ secrets.GITHUB_TOKEN }}</span></span>
+      - <span class="string"><span class="content">name: Set up JDK</span></span>
+        <span class="key">uses</span>: <span class="string"><span class="content">actions/setup-java@v4</span></span>
+        <span class="key">with</span>:
+          <span class="key">distribution</span>: <span class="string"><span class="content">'adopt'</span></span>
+          <span class="key">java-version</span>: <span class="string"><span class="content">${{ matrix.java }}</span></span>
+      - <span class="string"><span class="content">name: Get the current version</span></span>
+        <span class="key">id</span>: <span class="string"><span class="content">current_version</span></span>
+        <span class="key">run</span>: <span class="string"><span class="delimiter">|</span><span class="content">
+          echo &quot;$(cat gradle.properties | grep 'projectVersion=' | awk '{print $1}')&quot; &gt;&gt; &quot;$GITHUB_OUTPUT&quot;</span></span>
+      - <span class="string"><span class="content">name: Generate Docs</span></span>
+        <span class="key">id</span>: <span class="string"><span class="content">build</span></span>
+        <span class="key">uses</span>: <span class="string"><span class="content">gradle/actions/setup-gradle@v3</span></span>
+        <span class="key">with</span>:
+          <span class="key">arguments</span>: <span class="string"><span class="content">docs</span></span>
+      - <span class="string"><span class="content">name: Deploy to GitHub Pages</span></span>
+        <span class="key">id</span>: <span class="string"><span class="content">deployment</span></span>
+        <span class="key">uses</span>: <span class="string"><span class="content">rainboyan/deploy-github-pages@main</span></span>
+        <span class="key">env</span>:
+          <span class="key">VERSION</span>: <span class="string"><span class="content">${{ steps.current_version.outputs.projectVersion }}</span></span>
+          <span class="key">GH_TOKEN</span>: <span class="string"><span class="content">${{ secrets.GH_TOKEN }}</span></span>
+          <span class="key">BRANCH</span>: <span class="string"><span class="content">gh-pages</span></span>
+          <span class="key">FOLDER</span>: <span class="string"><span class="content">build/docs</span></span></code></pre>
 </div>
 </div>
 
