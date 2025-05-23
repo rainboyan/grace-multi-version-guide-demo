@@ -135,7 +135,7 @@ function addJsClass() {
           <span class="key">arguments</span>: <span class="string"><span class="content">docs</span></span>
       - <span class="string"><span class="content">name: Deploy to GitHub Pages</span></span>
         <span class="key">id</span>: <span class="string"><span class="content">deployment</span></span>
-        <span class="key">uses</span>: <span class="string"><span class="content">rainboyan/deploy-github-pages@main</span></span>
+        <span class="key">uses</span>: <span class="string"><span class="content">rainboyan/deploy-github-pages@v1</span></span>
         <span class="key">env</span>:
           <span class="key">VERSION</span>: <span class="string"><span class="content">${{ steps.current_version.outputs.projectVersion }}</span></span>
           <span class="key">TOKEN</span>: <span class="string"><span class="content">${{ secrets.GH_TOKEN }}</span></span>
