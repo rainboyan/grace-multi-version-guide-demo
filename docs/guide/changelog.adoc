@@ -2,7 +2,7 @@ This is the changelog,
 
 == 1.0.0
 
-v1.0.0 released
+Today is the day, v1.0.0 released
 
 == 1.0.0-RC2
 
