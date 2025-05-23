@@ -257,7 +257,7 @@ dependencies {
         <span class="key">uses</span>: <span class="string"><span class="content">rainboyan/deploy-github-pages@main</span></span>
         <span class="key">env</span>:
           <span class="key">VERSION</span>: <span class="string"><span class="content">${{ steps.current_version.outputs.projectVersion }}</span></span>
-          <span class="key">GH_TOKEN</span>: <span class="string"><span class="content">${{ secrets.GH_TOKEN }}</span></span>
+          <span class="key">TOKEN</span>: <span class="string"><span class="content">${{ secrets.GH_TOKEN }}</span></span>
           <span class="key">BRANCH</span>: <span class="string"><span class="content">gh-pages</span></span>
           <span class="key">FOLDER</span>: <span class="string"><span class="content">build/docs</span></span></code></pre>
 </div>
