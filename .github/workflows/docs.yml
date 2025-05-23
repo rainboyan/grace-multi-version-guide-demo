@@ -40,6 +40,6 @@ jobs:
         uses: rainboyan/deploy-github-pages@main
         env:
           VERSION: ${{ steps.current_version.outputs.projectVersion }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          TOKEN: ${{ secrets.GH_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build/docs
